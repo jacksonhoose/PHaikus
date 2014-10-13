@@ -5,6 +5,7 @@ block content
 		each haiku in haikus
 			li
 				h3 
-					a(href="/haiku/#{haiku.title.split(' ').join('-')}")= haiku.title
-				h6= haiku.author
+					a(href="/haiku/#{haiku.titleSlug}")= haiku.title
+				p by 
+					a(href="/author/#{haiku.authorSlug}")= haiku.author
 				hr

@@ -36,6 +36,7 @@
     "gulp-image": "~0.4.2",
     "gulp-jshint": "~1.8.4",
     "jshint-stylish": "~0.4.0",
-    "faker": "~2.0.1"
+    "faker": "~2.0.1",
+    "gulp-nodemon": "~1.0.4"
   }
 }

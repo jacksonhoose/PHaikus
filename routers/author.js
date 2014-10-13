@@ -6,9 +6,10 @@ var router = require('koa-router'),
 	api = new router();
 
 api.get('/:author', list);
+api.get('/:author', list);
 
 function *list(author) {
-	var res = yield haikus.find({ authorSlug: author });
+	var res = yield haikus.find({ authorSlug: this.params.author });
 
 	yield this.render('list', { 
 		haikus: res

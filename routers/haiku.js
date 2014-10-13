@@ -18,7 +18,7 @@ function *list() {
 }
 
 function *show(title) {
-	var res = yield haikus.findOne({ titleSlug: title  });
+	var res = yield haikus.findOne({ titleSlug:  this.params.title });
 	
 	yield this.render('home', {
 		title: res.title,

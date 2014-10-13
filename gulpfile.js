@@ -1,17 +1,25 @@
-var gulp = require('gulp');
-var watch = require('gulp-watch');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var image = require('gulp-image');
-var compass = require('gulp-compass');
-var minifyCSS = require('gulp-minify-css');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
+var gulp = require('gulp'), 
+	watch = require('gulp-watch'),
+	concat = require('gulp-concat'),
+	uglify = require('gulp-uglify'),
+	image = require('gulp-image'),
+	compass = require('gulp-compass'),
+	minifyCSS = require('gulp-minify-css'),
+	jshint = require('gulp-jshint'),
+	stylish = require('jshint-stylish'),
+	nodemon = require('gulp-nodemon');
 
 var handleError = function(err) {
 	console.log(err.toString());
 	this.emit('end');
 };
+
+gulp.task('develop', function() {
+	nodemon({
+		script: 'app.js',
+		nodeArgs: ['--harmony']
+	});
+});
 
 gulp.task('javascript', function() {
 	gulp.src([
