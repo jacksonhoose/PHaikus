@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	ul
+		each haiku in haikus
+			li
+				h3 
+					a(href="/haiku/#{haiku.title.split(' ').join('-')}")= haiku.title
+				h6= haiku.author
+				hr
