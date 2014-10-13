@@ -3,6 +3,6 @@ I built Poophaikus.com sometime ~ 2010 when I first started getting into web dev
 
 ### Setup
 * install Mongodb and create a PoopHaikus DB with a Haikus collection
-* run `npm install`
+* run `npm install && bower install` to install backend/frontend devependencies
 * run `node seed.js` to seed database
 * run `node --harmony app.js` to start app
