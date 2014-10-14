@@ -14,7 +14,12 @@ var haiku = require('./routers/haiku'),
 /* logging */
 app.use(logger());
 
+/*!
+ * static files
+ */
 app.use(serve('./assets/js'));
+app.use(serve('./assets/img/dest'));
+app.use(serve('./assets/img/css'));
 
 app.use(json({ pretty: false, param: 'pretty' }));
 
