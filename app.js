@@ -6,6 +6,9 @@ var koa = require('koa'),
 	views = require('koa-views'),
 	json = require('koa-json'),
 	serve = require('koa-static'),
+	gzip = require('koa-gzip'),
+	etag = require('koa-etag'),
+	wan = require('wan/koa'),
 	app = koa();
 
 var haiku = require('./routers/haiku'),
@@ -13,6 +16,10 @@ var haiku = require('./routers/haiku'),
 
 /* logging */
 app.use(logger());
+
+app.use(gzip());
+app.use(etag());
+// app.use(wan({ location: './assets/img/dest' }));
 
 /* static files */
 app.use(serve('./assets/js'));

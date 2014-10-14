@@ -1,5 +1,7 @@
-$red: #eaeaea;
+@import "compass/css3";
+@import "lib/normalize";
+@import "typography";
 
 body {
-	background:$red;
+	padding:2rem;
 }
