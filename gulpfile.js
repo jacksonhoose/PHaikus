@@ -35,10 +35,10 @@ gulp.task('develop', function() {
 
 gulp.task('javascript', function() {
 	gulp.src([
-		path.bower + 'jquery/dist/jquery.js',
-		path.bower + 'angular/angular.js',
-		path.bower + 'angular-loading-bar/buid/loading-bar.js',
-		path.bower + 'angular-ui-router/release/angular-ui-router.js',
+		path.bower + '/jquery/dist/jquery.js',
+		path.bower + '/angular/angular.js',
+		path.bower + '/angular-loading-bar/buid/loading-bar.js',
+		path.bower + '/angular-ui-router/release/angular-ui-router.js',
 		path.js + '/app.js'
 	])
 	.pipe(concat('app.min.js'))
