@@ -9,6 +9,18 @@ var gulp = require('gulp'),
 	stylish = require('jshint-stylish'),
 	nodemon = require('gulp-nodemon');
 
+
+var path = {
+	bower: 'assets/components',
+	js: 'assets/js',
+	scss: 'assets/scss',
+	css: 'assets/css',
+	img: {
+		dest: 'assets/img/dest',
+		src: 'assets/img/src'
+	}
+};
+
 var handleError = function(err) {
 	console.log(err.toString());
 	this.emit('end');
@@ -23,25 +35,29 @@ gulp.task('develop', function() {
 
 gulp.task('javascript', function() {
 	gulp.src([
-		'assets/js/app.js'
+		path.bower + 'jquery/dist/jquery.js',
+		path.bower + 'angular/angular.js',
+		path.bower + 'angular-loading-bar/buid/loading-bar.js',
+		path.bower + 'angular-ui-router/release/angular-ui-router.js',
+		path.js + '/app.js'
 	])
 	.pipe(concat('app.min.js'))
 	.pipe(uglify())
 	.on('error', handleError)
-	.pipe(gulp.dest('assets/js'));
+	.pipe(gulp.dest(path.js));
 });
 
 gulp.task('lint', function() {
-    gulp.src('assets/js/app.js')
+    gulp.src(path.js + '/app.js')
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('image', function() {
-	gulp.src('assets/img/src/*')
+	gulp.src(path.img.src + '*')
 	.pipe(image())
 	.on('error', handleError)
-	.pipe(gulp.dest('assets/img/dest'));
+	.pipe(gulp.dest(path.img.dest));
 });
 
 gulp.task('compass', function() {
@@ -49,20 +65,20 @@ gulp.task('compass', function() {
 		'assets/scss/app.scss'
 	])
 	.pipe(compass({
-		css: 'assets/css',
-		sass: 'assets/scss',
-		image: 'assets/img/dist',
+		css: path.css,
+		sass: path.scss,
+		image: path.img.dest,
 		require: ['breakpoint']
 	}))
 	.on('error', handleError)
 	.pipe(minifyCSS())
-	.pipe(gulp.dest('assets/css'));
+	.pipe(gulp.dest(path.css));
 });
 
 gulp.task('watch', function() {
-	gulp.watch('assets/img/src/*', ['image']);
-	gulp.watch('assets/scss/**/*.scss', ['compass']);
-	gulp.watch('assets/js/**/*.js', ['lint', 'javascript']);
+	gulp.watch(path.img.src + '*', ['image']);
+	gulp.watch(path.scss + '**/*.scss', ['compass']);
+	gulp.watch(path.js + '**/*.js', ['lint', 'javascript']);
 });
 
 gulp.task('default', ['compass', 'image', 'lint', 'javascript', 'watch']);

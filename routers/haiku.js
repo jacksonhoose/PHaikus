@@ -19,10 +19,10 @@ function *list() {
 
 function *show(title) {
 	var res = yield haikus.findOne({ titleSlug:  this.params.title });
-	
-	yield this.render('home', {
-		title: res.title,
-		body: res.body
+	// this.body = yield haikus.findOne({ titleSlug:  this.params.title });
+
+	yield this.render('show', {
+		haiku: res
 	});
 }
 

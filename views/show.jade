@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	article
+		h2= haiku.title
+		p by 
+			a(href="/author/#{haiku.authorSlug}")= haiku.author
+		p= haiku.body
+		hr
+		a(href='/haiku/') Back
