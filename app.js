@@ -19,9 +19,9 @@ app.use(logger());
  */
 app.use(serve('./assets/js'));
 app.use(serve('./assets/img/dest'));
-app.use(serve('./assets/img/css'));
+app.use(serve('./assets/css'));
 
-app.use(json({ pretty: false, param: 'pretty' }));
+/* app.use(json({ pretty: false, param: 'pretty' })); */
 
 /* templating */
 app.use(views('views', {
