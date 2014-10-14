@@ -8,7 +8,9 @@ var koa = require('koa'),
 	serve = require('koa-static'),
 	gzip = require('koa-gzip'),
 	etag = require('koa-etag'),
-	wan = require('wan/koa'),
+	// wan = require('wan/koa'),
+	// userauth = require('koa-userauth'),
+	// session = require('koa-generic-session'),
 	app = koa();
 
 var haiku = require('./routers/haiku'),
@@ -16,6 +18,8 @@ var haiku = require('./routers/haiku'),
 
 /* logging */
 app.use(logger());
+
+// app.use(session());
 
 app.use(gzip());
 app.use(etag());

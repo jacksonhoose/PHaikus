@@ -24,7 +24,9 @@
     "koa-static": "~1.4.7",
     "koa-gzip": "~0.1.0",
     "koa-etag": "~2.0.0",
-    "wan": "0.0.6"
+    "wan": "0.0.6",
+    "koa-generic-session": "~1.2.2",
+    "koa-userauth": "~1.1.2"
   },
   "devDependencies": {
     "gulp": "~3.8.8",
